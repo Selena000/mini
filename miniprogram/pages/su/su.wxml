@@ -1,0 +1,34 @@
+<view>
+  <button open-type="contact">{{message}}</button>
+  <button type="primary" open-type="share">share</button>
+  <button type="primary" open-type="feedback">feedback</button>
+  <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">getPhoneNumber</button>
+
+  <input bindinput="bindKeyInput" value="{{inputValue}}" />
+  <button type="primary" bindtap="addTodo">添加</button>
+  <view wx:for="{{todos}}" wx:key="_id">
+    {{item.title}}
+    <button bindtap="remove" data-item="{{item}}">删除</button>
+  </view>
+
+  <!-- <button bindtap="clickMe">click me</button> -->
+  <!-- <view wx:for="{{todos}}">{{item.title}}</view> -->
+  <!-- <view wx:if="{{view == 'WEBVIEW'}}"> WEBVIEW </view>
+  <view wx:elif="{{view == 'APP'}}"> APP </view>
+  <view wx:else="{{view == 'MINA'}}"> MINA </view> -->
+
+  <!-- <template name="staffName">
+    <view>
+      FirstName: {{firstName}}, LastName: {{lastName}}
+    </view>
+  </template> -->
+
+  <!-- <template is="staffName" data="{{...staffA}}"></template>
+  <template is="staffName" data="{{...staffB}}"></template>
+  <template is="staffName" data="{{...staffC}}"></template> -->
+  <button type="primary" bindtap="handleCloudFn">调用云函数</button>
+  <view wx:for="{{movies}}">{{item}}</view>
+</view>
+<!-- <wxs module="wxs" src="./test.wxs"></wxs>
+<view id="tapTest" data-hi="WeChat" bindtap="{{wxs.tapName}}"> Click me! </view>
+<map longitude="10" latitude="20"></map> -->
