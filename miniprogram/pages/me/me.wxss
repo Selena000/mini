@@ -1,0 +1,10 @@
+/* pages/me/me.wxss */
+.user-info {
+  text-align: center;
+}
+.user-info image {
+  border-radius: 150rpx;
+  width:150rpx;
+  height:150rpx;
+  margin-bottom: 30rpx;
+}

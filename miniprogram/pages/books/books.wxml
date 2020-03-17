@@ -1,0 +1,4 @@
+<view wx:for="{{books}}" wx:key="_id" class="books">
+    <text>{{item.title}}</text>
+    <image src="{{item.image}}"/>
+  </view>

@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/books/books",
+    "pages/me/me",
     "pages/su/su",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",
     "pages/openapi/openapi",
@@ -15,11 +16,27 @@
     "pages/im/im",
     "pages/im/room/room"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/books/books",
+        "text": "图书",
+        "iconPath": "images/img/book.png",
+        "selectedIconPath": "images/img/book-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "images/img/me.png",
+        "selectedIconPath": "images/img/me-active.png"
+      }
+    ]
+  },
   "window": {
     "backgroundColor": "#ff0000",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "小程序练习",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

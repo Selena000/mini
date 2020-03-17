@@ -1,0 +1,15 @@
+<view>
+  <view wx:if="{{userInfo.openid}}" class="user-info">
+    <image src="{{userInfo.avatarUrl}}"/>
+    <view>
+      <button bindtap="scanCode"  type="warn" plain="true">扫描添加图书</button>
+    </view>
+  </view>
+  <view wx:else class="user-info">
+    <image src="../../images/img/unlogin.png"/>
+    <view>
+      <button size="mini" type="primary" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
+    </view>
+  </view>
+  
+</view>
