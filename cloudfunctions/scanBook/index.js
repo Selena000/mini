@@ -29,7 +29,8 @@ async function getFood() {
   console.log(ret)
 }
 
-// getDouban('9787559445735')
+getDouban('9787559445735')
+
 async function searchDouban(code) {
   let searchInfo = await axios.get('https://search.douban.com/book/subject_search?search_text=' + code)
   let reg = /window\.__DATA__ = "(.*)"/
@@ -40,17 +41,25 @@ async function searchDouban(code) {
   return {}
 }
 
+
 async function getDouban(code) {
   let detail = await searchDouban(code)
-  console.log('detail', detail)
   let detailPage = await axios.get(detail.url)
   let $ = cheerio.load(detailPage.data)
   let tags = []
+  let comments = []
 
   $('#db-tags-section a.tag').each((i, v) => {
     tags.push({
       title: $(v).text()
     })
+  })
+
+  $('.comment-item').each((i, v) => {
+    let comment = {
+      name: $(v).find('.comment-info a').text(),
+      content: $(v).find('.short').text()
+    }
   })
 
   const ret = {
@@ -60,10 +69,11 @@ async function getDouban(code) {
     rate: detail.rating.value,
     url: detail.url,
     title: detail.title,
-    summary: $('#link-report .intro').text()
+    summary: $('#link-report .intro').text(),
+    comments
   }
 
-  console.log('ret', ret)
+  // console.log('ret', ret)
 
   return ret
 }

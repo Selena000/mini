@@ -7,7 +7,64 @@ Page({
    */
   data: {
     books: [],
-    page: 0
+    page: 0,
+    error: ''
+  },
+
+  subscribe() {
+    let templateId = 'kfUjRh1qWkmIR-KFjT2joQGBHagZK6KWqP7pSGOHxBU'
+    const _this = this
+    const item = {
+      phrase6: {
+        value: '活动'
+      },
+      thing1: {
+        value: '这个是活动签到类型222'
+      }
+    }
+
+    wx.requestSubscribeMessage({
+      tmplIds: [templateId],
+      success: res => {
+        wx.cloud.callFunction({
+          name: 'message',
+          data: {
+            data: item,
+            templateId
+          }
+        }).then(res => {
+          wx.showToast({
+            title: '订阅成功！',
+            icon: 'success'
+          })
+          _this.setData({
+            error: JSON.stringify(res)
+          })
+          _this.sendSubscribe()
+        }).catch(err => {
+          wx.showToast({
+            title: '订阅失败',
+            icon: 'none'
+          })
+        })
+      },
+      complete: res => {
+        console.log('complete', res)
+      }
+    })
+  },
+
+  sendSubscribe() {
+    wx.cloud.callFunction({
+      name:'sendMessage',
+      complete: res => {
+        // alert(ret)
+        this.setData({
+          error: JSON.stringify(res)
+        })
+        console.log(123,res)
+      }
+    })
   },
 
   getList() {

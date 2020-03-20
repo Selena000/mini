@@ -1,4 +1,10 @@
-<view wx:for="{{books}}" wx:key="_id" class="books">
+<!-- <view wx:for="{{books}}" wx:key="_id" class="books">
     <text>{{item.title}}</text>
     <image src="{{item.image}}"/>
-  </view>
+  </view> -->
+
+<view>
+  <button style="margin-bottom: 10px;" bindtap="subscribe" type="primary">订阅</button>
+  <button bindtap="sendSubscribe" type="primary">测试timer</button>
+  <text>{{error}}</text>
+</view>
